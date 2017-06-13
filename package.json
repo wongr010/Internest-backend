@@ -1,0 +1,29 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "My first json file",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "console.log(\"Hello world\");",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wongr010/Internest-backend.git"
+  },
+  "keywords": [
+    "hello",
+    "json",
+    "node"
+  ],
+  "author": "Rosalyn Wong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wongr010/Internest-backend/issues"
+  },
+  "homepage": "https://github.com/wongr010/Internest-backend#readme"
+}
