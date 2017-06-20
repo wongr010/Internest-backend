@@ -1,1 +1,27 @@
-This program is currently reading from a text file!
+Check out the CASL Law for the email
+5:30 on Monday meeting with Neil
+Look for alternatives for how to launch the website without 3rd party APIs to remove dependency on other companies
+
+
+Concatenate black and white image with colour components to colourize the image
+Use regression to estimate accurate image colour (compare with
+actual coloured images)
+L2 Regression
+Classification loss w/ Rebalancing (more accurate)
+Train the system using colour photos
+Red-blue ambiguity - network cannot determine which colour to go with
+Feed in images, separate into 1000 categories semantically to train networks
+(apply class supervision weights)
+Best result: supervised pre-training using human labels
+Use colorization to avoid human supervision
+set up pre-training scheme to induce usefule representation
+split-brain autoencoder: combine grayscale with RGB channel
+
+Combine the grayscale image with user inputted color to get more accurate results
+You can use reference images to influence the end colourization result
+770
+
+cvan-dreumel@shred-tech.com
+perry@transformix.com
+tobins@umbra.com
+ezou@viqua.com
