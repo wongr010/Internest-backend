@@ -1,0 +1,38 @@
+
+h1, h2{
+	color: indigo;
+}
+
+body{
+	font-family: Century, Arial, sans-serif;
+}
+
+main{
+	background-color: lavender;
+	max-width: 720px;
+}
+
+img{
+	width: 100%;
+}
+
+.show{
+	color: chocolate;
+}
+
+footer {
+	text-align: right;
+	background-color: #333333;
+	color: beige;
+	height: 60px;
+	line-height: 60px;
+	padding-right: 30px;
+}
+/*When the screen is 720 px or bigger these rules will apply*/
+@media screen and (min-width: 720px){
+	main{
+		background-color: chartreuse;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
