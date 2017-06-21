@@ -43,4 +43,21 @@ writerStream.on('error', function(err){
    console.log(err.stack);
 });
 
+//chaining the streams
+
+
+var zlib=require('zlib');
+
+var readfrom=fs.createReadStream('practice.txt');
+var writefrom=fs.createWriteStream('outpractice2.txt');
+
+//pipe the read/write
+//read practice and write to outpractice2
+
+readfrom.pipe(writefrom);
+console.log("Read and wrote!");
+
+
+//use piping and chaining tto compress a file
+
 console.log("Program Ended");
