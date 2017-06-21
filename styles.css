@@ -1,0 +1,141 @@
+
+.bodyparagraph {
+	font-size: 16px;
+	background-color: #7FDBFF;
+	font-family: 'Nunito';
+	padding: 2em;
+}
+
+
+
+.title{
+	padding-top: 20px;
+	font-size: 80px;
+	margin-bottom: 0px;
+}
+
+
+
+.logo-size{
+	width: 160px;
+	height: 35px;
+	float: left;
+}
+
+
+
+html { 
+  background: url(biztop.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.no-squish{
+	padding: 0px;
+}
+
+.reference-elem{
+	position: relative;
+}
+
+#slogan{
+	z-index: 80;
+	position: relative;
+
+	color: #EAE3EA;
+	font-size: 4em;
+	font-weight: bold;
+	
+  	width: 100%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  	text-align: center;
+  	display: block;
+  	padding-bottom: 10%;
+  	column-span: all;
+ 
+}
+
+#Employers-info{
+	z-index: 100;
+	position: absolute;
+	top: 15em;
+	color: #D98310;
+	margin: auto;
+	display: block;
+	padding-top: 15%;
+	text-align: center;
+	
+	
+}
+
+.student-intro{
+	float: right;
+}
+
+.employer-intro{
+	z-index: 1000;
+	width: 50%;
+	padding: 5em;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	
+	
+	color: #031424;
+	
+}
+
+.sign-up{
+	background-color: #328CC1;
+	color: #1D2731;
+	font-weight: bold;
+
+}
+
+.intro-wrapper{
+	width: 100%;
+	position: relative;
+	top: 19em;
+	background-color: rgba(176, 196, 222, 0.5);
+	margin-bottom: 12em;
+	float: left;
+}
+
+.menu-button-manip{
+	z-index: 50000;
+	position: relative;
+
+}
+
+.log-in-style{
+	background-color: #00315D; /*Prussian blue*/
+	color: white;
+	font-weight: bold;
+}
+
+h3{
+	font-weight: bold;
+}
+
+nav.navbar.open {
+  margin-bottom: 120px;
+}
+
+
+@media only screen and (max-width : 480px) {
+		.employer-intro{
+			width: 100%;
+			font-size: 1.25em;
+			padding: 2em;
+		}
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+    	.employer-intro{
+    		width: 100%;
+    	}
+    }
