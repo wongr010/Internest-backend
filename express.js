@@ -3,6 +3,8 @@
 var express=require('express'); //include express
 var bodyParser = require('body-parser');
 var app=express(); //create an express application
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 var path=require('path'); //used to join variables to create a file path
 //var router=express.Router();
 //var cookieParser = require('cookie-parser');
@@ -16,10 +18,9 @@ app.use(express.static(path.join(__dirname, 'index')));
 //join this string with 'index', name of the folder containing the static files
 
 //listening for client requests
-app.post('/yes', function(req, res){
-	console.log("Yes! We got it!");
-	res.send("<p> New text </p>");
-})
+
+
+
 
 
 var server=app.listen(app.get('port'), function(){ //app.get('port') returns 3000
@@ -27,5 +28,10 @@ var server=app.listen(app.get('port'), function(){ //app.get('port') returns 300
 	console.log("I'm listening");
 
 });
+
+app.post('/yes', function(req, res){
+	console.log(req.body);
+	res.send("<p> New text </p>");
+})
 
 
