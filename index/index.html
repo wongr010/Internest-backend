@@ -1,46 +1,16 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta content="stuff, to, help, search, engines, not" name="keywords">
-<meta content="What this page is about." name="description">
-<meta content="Display Webcam Stream" name="title">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<title>Internest</title>
-
-  
-<style>
-#container {
-    margin: 0px auto;
-    width: 500px;
-    height: 375px;
-    border: 10px #333 solid;
-}
-#videoElement {
-    width: 500px;
-    height: 375px;
-    background-color: #666;
-}
-</style>
+    <title>HTML</title>
 </head>
-  
 <body>
-<div id="container">
-   <section>
-    <video autoplay="true" id="videoElement">
-     
-    </video>
-     <button class="btn btn-default record" onclick="startrecord()">Record</button>
-    <button class="btn btn-default stop" onclick="endrecord()"> Stop</button>
-    </section>
-
-    <section>
-
-    <video autoplay="true" id="playElement"></video>
-    <button class="btn btn-default play" onclick="playrecord()">Play</button>
-    </section>
-</div>
-
-<script src="video.js"></script>
+<form action="/yes" method="post">
+    <label for="name"> Name: </label>
+    <input type="text" id="name" name="name">
+    <label> How old: </label>
+    <input type="number" name="age">
+    <input type="submit" value="send">
+</form>
 </body>
 </html>

@@ -2,6 +2,7 @@ var video = document.querySelector("#videoElement");
 var record=document.querySelector('.record');
 var stop=document.querySelector('.stop'); 
 
+
 var playvideo=document.querySelector("#playElement");
 
 var mediaRecorder;
@@ -17,10 +18,7 @@ function handleVideo(stream) {
     console.log('getUserMedia() got stream: ', stream);
     window.stream=stream;
     
-
     //else video.src=stream;
-    
-
 }
 
 function videoError(e) {
@@ -40,7 +38,7 @@ function handledata(event){
 
 
 
- navigator.getUserMedia({video: true}, handleVideo, videoError);
+ navigator.getUserMedia({video: true, audio: true}, handleVideo, videoError);
 
 
 function startrecord(){
