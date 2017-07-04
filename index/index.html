@@ -1,16 +1,109 @@
-
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
-    <title>HTML</title>
+  <title>InterNest</title>
+
+  <link rel="stylesheet" href = "css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Nunito: 400, 300' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src = "custom/company.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!--<script src="intro.js"></script>-->
+  
+
+  <link rel="stylesheet" href = "custom/login.css">
+
 </head>
 <body>
-<form action="/yes" method="post">
-    <label for="name"> Name: </label>
-    <input type="text" id="name" name="name">
-    <label> How old: </label>
-    <input type="number" name="age">
-    <input type="submit" value="send">
+
+  <header>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand no-squish" href="index.html">
+            <img alt="Brand" src="seethrushort.png" alt="nest" class="logo-size">
+        </a>
+
+    </div>
+    <div class="collapse navbar-collapse menu-button-manip" id="bs-example-navbar-collapse-1">
+
+      <form class="navbar-form navbar-right">
+
+        <button type="submit" class="btn btn-default log-in-style">LOG OUT</button>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#"> Looking to Hire?</a></li>
+        <li> <a href="#"> Looking to get Hired?</a></li>
+
+    </ul>
+
+
+
+
+
+</div>
+</div>
+
+</nav>
+
+
+</header>
+
+
+<!-- Rounded switch -->
+<form class="input-login" action="/profile-setup" method="post" enctype="application/x-www-form-urlencoded">
+
+
+
+  <h2 class="login-header">Sign Up</h2>
+
+  <p>I am a:</p>
+  
+  <div class="toggle-wrapper">
+      <label class="slider-value">Student</label>
+      <label class="switch">
+
+          <input type="checkbox" onclick="toggleposition('newuser')">
+
+          <div class="slider round"></div>
+      </label>
+      <label class="slider-value">Employer</label>
+  </div>
+
+
+
+  <div class="form-group login-section">
+    <label for="name">Choose a username</label>
+    <input name="username" class="form-control" placeholder="Username" type="text" >
+</div>
+<div class="form-group login-section">
+    <label for="exampleInputPassword1">Choose a password</label>
+    <input name="password" class="form-control" placeholder="Password" type="password">
+</div> 
+
+<div class="form-group login-section">
+    <label for="exampleInputPassword1">Confirm password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+</div>
+<input type="submit" value="Submit" class="btn btn-default login-btn">
+<!--TEMPORARY LINK BUTTON-->
+<!--<a href="studentreg.html" id="newuser-toggle" class="btn btn-default login-btn" onclick="reset()">Submit</a> -->
+
 </form>
+
+
+
 </body>
 </html>
