@@ -7,7 +7,7 @@ var app=express(); //create an express application
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 var path=require('path'); //used to join variables to create a file path
-
+var popup=require('window-popup').windowPopup;
 
 db.connect('mongodb://localhost:27017/userdatabase', function(err){
 	if (err){
@@ -46,6 +46,10 @@ var server=app.listen(app.get('port'), function(){ //app.get('port') returns 200
 
 app.post('/profile-setup', function(req, res){
 	console.log(req.body);
+	if (req.body.password != req.body.confirmpassword){
+		//popup(500, 500, 'Passwords do not match!');
+		return;
+	}
 	res.send("<p> New text </p>");
 
 	

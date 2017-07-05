@@ -56,3 +56,26 @@ function reset(){
 	isemployer=false;
 }
 
+function checkPass(){
+	var pass1=document.getElementById("passwd1");
+	var pass2=document.getElementById("passwd2");
+	var message=document.getElementById('confirmation');
+
+	var green="#66cc66";
+	var red="#ff6666";
+
+	if (pass1.value!=pass2.value){
+		pass2.style.backgroundColor=red;
+		message.style.color=red;
+		message.innerHTML="Passwords do not match!"
+	}
+	else{
+		pass2.style.backgroundColor=green;
+		message.style.color=green;
+		message.innerHTML="Passwords match"
+		$("#submission").removeClass("disabled");
+	}
+	//alert(document.getElementById("passwd1").value);
+	//alert(document.getElementById("passwd2").value);
+}
+
