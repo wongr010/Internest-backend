@@ -68,6 +68,7 @@ function checkPass(){
 		pass2.style.backgroundColor=red;
 		message.style.color=red;
 		message.innerHTML="Passwords do not match!"
+		$("#submission").addClass("disabled");
 	}
 	else{
 		pass2.style.backgroundColor=green;

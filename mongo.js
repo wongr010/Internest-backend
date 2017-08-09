@@ -4,6 +4,7 @@ var mongodb=require('mongodb');
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/mydb"; //if it doesn't exist, mongoDB will create a database here called mydb
+//mongoDB must be running in order for this to work
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
