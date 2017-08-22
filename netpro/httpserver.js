@@ -1,9 +1,12 @@
+//9dd8e68d97624eec99ed1842726cc483
+
 var http = require('http'),
     express = require('express'),
     path = require('path'),
     MongoClient=require('mongodb').MongoClient,
     Server=require('mongodb').Server,
-    CollectionDriver=require('./driver').CollectionDriver;
+    CollectionDriver=require('./driver').CollectionDriver,
+    request=require('request');
  
 var app = express();
 app.set('port', process.env.PORT || 3000); 
@@ -52,8 +55,27 @@ app.get('/:collection', function(req, res) {
          }
     });
 });
+
+app.get('/:collection/news', function(req, res){
+  console.log('Hello');
+   var item={uri: "https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=9dd8e68d97624eec99ed1842726cc483",
+  method: "GET",
+  timeout: 10000,
+  followRedirect: true,
+  maxRedirects:20
+}
+
+request(item, function(error, resp, body){
+  if (error) res.send(400, error);
+  else{
+    res.send(200, resp);
+    res.send(null, body);
+  }
+});
+
+});
  
-app.get('/:collection/:entity', function(req, res) { //handles a GET request for URL localhost:3000/any-value/any-value
+/*app.get('/:collection/:entity', function(req, res) { //handles a GET request for URL localhost:3000/any-value/any-value
    var params = req.params;
    var entity = params.entity;
    var collection = params.collection;
@@ -65,7 +87,7 @@ app.get('/:collection/:entity', function(req, res) { //handles a GET request for
    } else {
       res.send(400, {error: 'bad url', url: req.url});
    }
-});
+});*/
 
 app.post('/:collection', function(req, res) { //A
     var object = req.body;
