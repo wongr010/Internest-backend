@@ -34,34 +34,48 @@ app.get('/', function (req, res) {
   res.send('<html><body><h1>Hello World</h1></body></html>');
 });
  
-app.get('/:collection', function(req, res) { //A
+app.get('/:collection', function(req, res) { 
+  /*The ':' before 'collection' specifies that it accepts ANY value after the '/' in localhost:3000/
+  In other words, this function could handle localhost:3000/me, localhost:3000/you, localhost:3000/any-random-string
+  if there was no ':', this function would ONLY handle the GET request for url localhost:3000/collection
+  */ 
    var params = req.params; //B
-   collectionDriver.findAll(req.params.collection, function(error, objs) { //C
+   collectionDriver.findAll(req.params.collection, function(error, objs) { //call the findAll function from driver.js
         if (error) { res.send(400, error); } 
         else { 
-            if (req.accepts('html')) { //E
-                res.render('data',{objects: objs, collection: req.params.collection}); //F
-              } else {
-            res.set('Content-Type','application/json'); //G
-                  res.send(200, objs); //H
+            if (req.accepts('html')) { //check if the request will accept a html response
+                res.render('data',{objects: objs, collection: req.params.collection}); //if yes, the html response is 
+              } else {                                                                //stored in the data.jade template
+            res.set('Content-Type','application/json'); //if html not accepted, use JSON format
+                  res.send(200, objs); //send a success code and the JSON response
               }
          }
     });
 });
  
-app.get('/:collection/:entity', function(req, res) { //I
+app.get('/:collection/:entity', function(req, res) { //handles a GET request for URL localhost:3000/any-value/any-value
    var params = req.params;
    var entity = params.entity;
    var collection = params.collection;
    if (entity) {
-       collectionDriver.get(collection, entity, function(error, objs) { //J
+       collectionDriver.get(collection, entity, function(error, objs) { //looking for a specific entry in a collection, using our driver.js function
           if (error) { res.send(400, error); }
-          else { res.send(200, objs); } //K
+          else { res.send(200, objs); } //if there isn't an error, return the entry as a JSON object
        });
    } else {
       res.send(400, {error: 'bad url', url: req.url});
    }
 });
+
+app.post('/:collection', function(req, res) { //A
+    var object = req.body;
+    var collection = req.params.collection;
+    collectionDriver.save(collection, object, function(err,docs) {//save the POST input to the collection
+          if (err) { res.send(400, err); } 
+          else { res.send(201, docs); } //if there isn't an error, reply with code 201 and print out the entire response
+     });
+});
+
 
 app.use(function (req,res) {
     res.render('404', {url:req.url});

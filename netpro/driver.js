@@ -4,7 +4,8 @@ CollectionDriver=function(db){
 	this.db=db;
 }; //constructor to store a mongoDB client instance 
 
-CollectionDriver.prototype.getCollection=function(collectionName, callback){ //fetches a collection object and returns the object or an error
+//find a specified collection
+CollectionDriver.prototype.getCollection=function(collectionName, callback){ //fetches a collection object and returns the collection or an error
 
 	this.db.collection(collectionName, function(error, thecollection){
 		if (error) callback(error);
@@ -12,8 +13,8 @@ CollectionDriver.prototype.getCollection=function(collectionName, callback){ //f
 	}); //a callback function is a function that is called at the completion of a task
 };
 
-//function that goes to the database and finds all matching objects
-//matching objects are stored in an array
+//function that goes to the database and finds all matching collections
+//results are stored in an array
 CollectionDriver.prototype.findAll = function(collectionName, callback) {
     this.getCollection(collectionName, function(error, the_collection) { //A
       if( error ) callback(error);
@@ -38,6 +39,19 @@ CollectionDriver.prototype.get = function(collectionName, id, callback) { //A
                 else callback(null, doc);
             });
         }
+    });
+};
+
+//stores an object, 'obj' into a collection, 'collectionName'
+CollectionDriver.prototype.save = function(collectionName, obj, callback) {
+    this.getCollection(collectionName, function(error, the_collection) { //find the specified collection
+      if( error ) callback(error)
+      else {
+        obj.created_at = new Date(); //add another variable to the inserted object, 'created_at', and assign it to the current date
+        the_collection.insert(obj, function() { //insert the object into collection
+          callback(null, obj);
+        });
+      }
     });
 };
 
