@@ -1,4 +1,4 @@
-var objectID=require('mongodb').ObjectID;
+var ObjectID=require('mongodb').ObjectID;
 
 CollectionDriver=function(db){
 	this.db=db;
@@ -52,6 +52,34 @@ CollectionDriver.prototype.save = function(collectionName, obj, callback) {
           callback(null, obj);
         });
       }
+    });
+};
+
+//updating objects in a collection
+CollectionDriver.prototype.update = function(collectionName, obj, entityId, callback) {
+    this.getCollection(collectionName, function(error, the_collection) {
+        if (error) callback(error);
+        else {
+        	
+            obj._id = ObjectID(entityId); //Create a new object using the constructor and use it to replace the old object with ID 'entityId'
+                        the_collection.save(obj, function(error,doc) { //Save the updated object 
+                if (error) callback(error);
+                else callback(null, obj);
+            });
+        }
+    });
+};
+
+//deleting objects in a collection
+CollectionDriver.prototype.delete = function(collectionName, entityId, callback) {
+    this.getCollection(collectionName, function(error, the_collection) { //fetch the collection the object is stored in
+        if (error) callback(error);
+        else {
+            the_collection.remove({'_id':ObjectID(entityId)}, function(error,doc) { //find the object with matching entityId and remove it
+                if (error) callback(error);
+                else callback(null, doc);
+            });
+        }
     });
 };
 

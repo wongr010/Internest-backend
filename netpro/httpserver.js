@@ -98,6 +98,36 @@ app.post('/:collection', function(req, res) { //A
      });
 });
 
+app.put('/:collection/:entity', function(req, res) { 
+    var params = req.params;
+    var entity = params.entity;
+    var collection = params.collection;
+    if (entity) {
+       collectionDriver.update(collection, req.body, entity, function(error, objs) { //passing a JSON object to the collectionDriver update function
+          if (error) { res.send(400, error); }
+          else { res.send(200, objs); } //if there's no error, send code 200 (successful) and display the response summary
+       });
+   } else {
+       var error = { "message" : "Cannot PUT a whole collection" };
+       res.send(400, error);
+   }
+});
+
+app.delete('/:collection/:entity', function(req, res) { 
+    var params = req.params;
+    var entity = params.entity;
+    var collection = params.collection;
+    if (entity) {
+       collectionDriver.delete(collection, entity, function(error, objs) { //send the object and its collection to the collectionDriver delete function
+          if (error) { res.send(400, error); }
+          else { res.send(200, 'Delete successful'); } //Send the success code, display response summary
+       });
+   } else {
+       var error = { "message" : "Cannot DELETE a whole collection" };
+       res.send(400, error);
+   }
+});
+
 
 app.use(function (req,res) {
     res.render('404', {url:req.url});
