@@ -56,7 +56,7 @@ CollectionDriver.prototype.save = function(collectionName, obj, callback) {
 };
 
 //updating objects in a collection
-CollectionDriver.prototype.update = function(collectionName, obj, entityId, callback) {
+/*CollectionDriver.prototype.update = function(collectionName, obj, entityId, callback) {
     this.getCollection(collectionName, function(error, the_collection) {
         if (error) callback(error);
         else {
@@ -68,7 +68,25 @@ CollectionDriver.prototype.update = function(collectionName, obj, entityId, call
             });
         }
     });
+};*/
+
+CollectionDriver.prototype.update=function(collectionName, obj, entityId, callback){
+	//obj is a JSON object, for example {title='Hello'} with the parameter being changed (title) and the value it is being changed to
+	  this.getCollection(collectionName, function(error, the_collection) { //fetch the collection the object is stored in
+        if (error) callback(error);
+        else {
+            the_collection.update({'_id':ObjectID(entityId)}, {$set: obj}, function(error,doc) { //find the object with matching entityId and change the title
+                /*$set is a command that tells the database to only update the parameter written in the obj object.
+                For example, if obj was written as {title='Hello'} the database would only change the 'title' parameter, and no other parameters would change.
+                If we didn't put $set, the entire data entry would be overwritten.*/
+                if (error) callback(error);     
+                else callback(null, doc);
+            });
+        }
+    });
 };
+
+
 
 //deleting objects in a collection
 CollectionDriver.prototype.delete = function(collectionName, entityId, callback) {

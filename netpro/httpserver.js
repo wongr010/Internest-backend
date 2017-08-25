@@ -6,6 +6,7 @@ var http = require('http'),
     MongoClient=require('mongodb').MongoClient,
     Server=require('mongodb').Server,
     CollectionDriver=require('./driver').CollectionDriver,
+    bodyParser=require('body-parser')
     request=require('request');
  
 var app = express();
@@ -13,6 +14,12 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views')); //A
 app.set('view engine', 'jade');
 app.use(express.bodyParser()); // <-- add
+//app.use(connect.bodyParser({strict: false}));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.raw());
+// parse text
+app.use(bodyParser.text());
 //B
 var mongoHost='localHost';
 var mongoPort=27017; //mongoDB database is default hosted at http://localhost:27017
@@ -92,6 +99,7 @@ request(item, function(error, resp, body){
 app.post('/:collection', function(req, res) { //A
     var object = req.body;
     var collection = req.params.collection;
+  
     collectionDriver.save(collection, object, function(err,docs) {//save the POST input to the collection
           if (err) { res.send(400, err); } 
           else { res.send(201, docs); } //if there isn't an error, reply with code 201 and print out the entire response
@@ -102,10 +110,13 @@ app.put('/:collection/:entity', function(req, res) {
     var params = req.params;
     var entity = params.entity;
     var collection = params.collection;
+    var object=req.body;
+
     if (entity) {
-       collectionDriver.update(collection, req.body, entity, function(error, objs) { //passing a JSON object to the collectionDriver update function
+ 
+       collectionDriver.update(collection, object, entity, function(error, objs) { //passing a JSON object to the collectionDriver update function
           if (error) { res.send(400, error); }
-          else { res.send(200, objs); } //if there's no error, send code 200 (successful) and display the response summary
+          else { res.send(200, 'update successful'); } //if there's no error, send code 200 (successful) and display "update successful" to terminal
        });
    } else {
        var error = { "message" : "Cannot PUT a whole collection" };
