@@ -61,3 +61,12 @@ console.log("Read and wrote!");
 //use piping and chaining tto compress a file
 
 console.log("Program Ended");
+
+
+
+
+/*
+search companies
+link to employees
+get their names and profiles
+*/
